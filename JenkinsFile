@@ -1,20 +1,30 @@
 pipeline {
     agent any
 
+    tools {
+        // make sure .NET SDK is installed on Jenkins
+        dotnet 'dotnet-sdk'
+    }
+
     stages {
+        stage('Restore') {
+            steps {
+                sh 'dotnet restore'
+            }
+        }
         stage('Build') {
             steps {
-                echo 'Building the project...'
+                sh 'dotnet build --configuration Release'
             }
         }
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                sh 'dotnet test'
             }
         }
-        stage('Deploy') {
+        stage('Publish') {
             steps {
-                echo 'Deploying the project...'
+                sh 'dotnet publish -c Release -o out'
             }
         }
     }
