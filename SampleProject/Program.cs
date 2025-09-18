@@ -21,5 +21,5 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-Console.WriteLine("🚀 Jenkins Auto-Build Test: Project started successfully!");
+
 app.Run();
