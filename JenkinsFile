@@ -13,10 +13,9 @@ pipeline {
             }
         }
         stage('Publish') {
-    steps {
-        bat 'dotnet publish SampleProject/SampleProject.csproj -c Release -o out'
+          steps {
+            bat 'dotnet publish SampleProject/SampleProject.csproj -c Release -o out'
     }
-}
 
         }
     }
